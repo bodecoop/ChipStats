@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import type { Post } from "../pages/ViewPosts"
 import { supabase } from "../supabase-client";
+import { Link } from "react-router";
 
 
 interface Props {
@@ -89,7 +90,7 @@ function PostItem({ post }: Props) {
   return (
     <div className="text-text p-2 rounded-lg border border-border shadow w-[500px]">
       <div className="text-lg">
-        <span className="font-bold"><DisplayName user_id={post.user_id} /></span> {getProfitMessage(post.buy_in, post.buy_out)}
+        <span className="font-bold"><Link to={`/profile/${post.user_id}`}><DisplayName user_id={post.user_id} /></Link></span> {getProfitMessage(post.buy_in, post.buy_out)}
       </div>
       <div className=" flex justify-between">
         <span className="font-extralight text-text-muted text-sm">{formatDate(post.date)}</span>

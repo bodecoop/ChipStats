@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router'
 import { BiMenu } from 'react-icons/bi'
 import { useAuth } from '../context/AuthContext';
@@ -26,7 +26,7 @@ function NavBar() {
                     {user ? (
                         <div className='flex items-center gap-4'>
                             {/* display profile */}
-                            {user?.user_metadata?.first_name} {user?.user_metadata?.last_name}
+                            <Link to={`/profile/${user.id}`} className=''>{user?.user_metadata?.first_name} {user?.user_metadata?.last_name}</Link>
 
                             {/* logout */}
                             <button onClick={signOut} className='font-semibold border-border border hover:bg-bg-neutral px-4 py-1 rounded-sm'>Logout</button>

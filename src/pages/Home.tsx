@@ -1,8 +1,8 @@
-import React from 'react'
+
 
 function Home() {
   return (
-    <div>Home</div>
+    <div className='mt-12'>Home. Only for users not logged in, otrheriwise redirect to dashboard</div>
   )
 }
 
