@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase-client";
 import PostItem from "../components/PostItem";
+import Friends from "../components/Friends";
 export interface Post {
     id: string;
     user_id: string;
@@ -15,8 +16,6 @@ export interface Post {
 function ViewPosts() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [error, setError] = useState<string | null>(null);
-
-    const [showCreatePost, setShowCreatePost] = useState(false);
 
     const fetchPosts = async () => {
         try {
@@ -47,11 +46,27 @@ function ViewPosts() {
 
 
   return (
-    <div className="text-text text-lg flex justify-center mt-12 pt-4">
-        <div className="flex flex-col gap-4">
-            {posts.map((post) => (
-                <PostItem key={post.id} post={post} />
-            ))}
+    <div className="text-text text-lg flex justify-center mt-12 pt-4 gap-8">
+        {posts.length > 0 ? (
+            <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 68px)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                {posts.map((post) => (
+                    <PostItem key={post.id} post={post} isSelf={false} deletePost={() => {}} />
+                ))}
+            </div>
+        ) : (
+            <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 4rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <div className="relative text-text p-2 rounded-lg border border-border shadow w-[500px] overflow-visible">
+                    <div className="text-lg">
+                        <span className="font-bold"> No posts to show </span>
+                    </div>
+                    <div className=" flex justify-between">
+                        <span className="font-extralight text-text-muted text-sm"></span>
+                    </div>
+                </div>
+            </div>
+        )}
+        <div className="">
+            <Friends />
         </div>
     </div>
   )

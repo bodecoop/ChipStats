@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../supabase-client';
@@ -37,7 +37,7 @@ function ProfilePage() {
     const [following, setFollowing] = useState<Follower[]>([]);
     const [posts, setPosts] = useState<Post[]>([]);
 
-    const [stats, setStats] = useState<UserStatistics>({games_played: 0, wins: 0, losses: 0, win_percentage: 0, profit: 0});
+    const [stats, setStats] = useState<UserStatistics>({ games_played: 0, wins: 0, losses: 0, win_percentage: 0, profit: 0 });
 
     const [showFollowers, setShowFollowers] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
@@ -127,9 +127,19 @@ function ProfilePage() {
             }
         }
     }
+    const handleDelete = async (post_id: string) => {
+        try {
+            const { error } = await supabase.from('posts').delete().eq('id', post_id);
+            if (error) console.error(error);
+            fetchPosts();
+            calcStats();
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     return (
-        <div className='text-lg flex flex-col mt-12 overflow-y-auto'>
+        <div className='text-lg flex flex-col mt-12'>
             <div
                 className={`overflow-x-hidden absolute inset-0 flex justify-end bg-black/30 z-50 transition-opacity duration-300 ${showFollowers ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setShowFollowers(false)} >
@@ -149,7 +159,7 @@ function ProfilePage() {
                 </div>
             </div>
             {/* profile header */}
-            <div className='p-8 flex items-center gap-x-4'>
+            <div className='pt-8 pl-8 pb-4 flex items-center gap-x-4 border-b border-border shadow-[0_4px_4px_-1px_rgba(0,0,0,0.1)]'>
                 <div className='w-32 h-32 bg-primary rounded-full flex-shrink-0'></div>
                 <div>
                     <div className="text-4xl font-bold flex items-center gap-x-8 text-text">
@@ -173,18 +183,31 @@ function ProfilePage() {
                 </div>
             </div>
             {/* body */}
-            <div className='px-8 gap-8 flex justify-baseline'>
+            <div className='px-8 pt-4 gap-8 flex justify-baseline'>
                 {/* user stats */}
                 <div className='text-text text-lg flex justify-center'>
                     <UserStats stats={stats} />
                 </div>
                 {/* user posts */}
                 <div className='text-text text-lg flex justify-center'>
-                    <div className="flex flex-col gap-4">
-                        {posts.map((post) => (
-                            <PostItem key={post.id} post={post} />
-                        ))}
-                    </div>
+                    {posts.length > 0 ? (
+                        <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 16rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            {posts.map((post) => (
+                                <PostItem key={post.id} post={post} isSelf={profileUser?.id === user?.id} deletePost={() => {handleDelete(post.id)}} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 4rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div className="relative text-text p-2 rounded-lg border border-border shadow w-[500px] overflow-visible">
+                                <div className="text-lg">
+                                    <span className="font-bold"> User has no posts </span>
+                                </div>
+                                <div className=" flex justify-between">
+                                    <span className="font-extralight text-text-muted text-sm"></span>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

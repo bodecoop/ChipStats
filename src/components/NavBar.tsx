@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { BiMenu } from 'react-icons/bi'
 import { useAuth } from '../context/AuthContext';
 
 function NavBar() {
     const [mobileMenu, setMobileMenu] = useState(false);
     const { user, signOut } = useAuth();
+    const nav = useNavigate();
 
   return (
     <div className="fixed top-0 w-full z-40 bg-bg-main border-b border-bg-neutral shadow">
@@ -29,7 +30,7 @@ function NavBar() {
                             <Link to={`/profile/${user.id}`} className=''>{user?.user_metadata?.first_name} {user?.user_metadata?.last_name}</Link>
 
                             {/* logout */}
-                            <button onClick={signOut} className='font-semibold border-border border hover:bg-bg-neutral px-4 py-1 rounded-sm'>Logout</button>
+                            <button onClick={() => {signOut(); nav('/')}} className='font-semibold border-border border hover:bg-bg-neutral px-4 py-1 rounded-sm'>Logout</button>
                         </div>
                     ) : (
                         <div>
