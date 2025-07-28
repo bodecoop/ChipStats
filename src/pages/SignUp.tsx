@@ -1,4 +1,4 @@
-import React, { lazy, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router';
 import { supabase } from '../supabase-client';
 import { BiEnvelope, BiLockAlt, BiLogoGoogle } from 'react-icons/bi';

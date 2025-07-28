@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Follower } from './ProfilePage'
 import { BiChevronRight } from 'react-icons/bi'
 import FollowerItem from '../components/FollowerItem'
