@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase-client";
-import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import ProfileItem from "./ProfileItem";
 

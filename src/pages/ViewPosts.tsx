@@ -49,6 +49,7 @@ function ViewPosts() {
     <div className="text-text text-lg flex justify-center mt-12 pt-4 px-4 gap-8">
         {posts.length > 0 ? (
             <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 68px)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                {error && <div className="text-red-500">{error}</div>}
                 {posts.map((post) => (
                     <PostItem key={post.id} post={post} isSelf={false} deletePost={() => {}} />
                 ))}

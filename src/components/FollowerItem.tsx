@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Follower } from '../pages/ProfilePage'
 import { supabase } from '../supabase-client';
 import { Link } from 'react-router';
