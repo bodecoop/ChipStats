@@ -46,7 +46,7 @@ function ViewPosts() {
 
 
   return (
-    <div className="text-text text-lg flex justify-center mt-12 pt-4 gap-8">
+    <div className="text-text text-lg flex justify-center mt-12 pt-4 px-4 gap-8">
         {posts.length > 0 ? (
             <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 68px)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {posts.map((post) => (
@@ -55,7 +55,7 @@ function ViewPosts() {
             </div>
         ) : (
             <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 4rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                <div className="relative text-text p-2 rounded-lg border border-border shadow w-[500px] overflow-visible">
+                <div className="relative text-text p-2 rounded-lg border border-border shadow max-w-[500px] min-w-[450px] overflow-visible">
                     <div className="text-lg">
                         <span className="font-bold"> No posts to show </span>
                     </div>
@@ -65,7 +65,7 @@ function ViewPosts() {
                 </div>
             </div>
         )}
-        <div className="">
+        <div className="hidden md:flex">
             <Friends />
         </div>
     </div>

@@ -139,7 +139,7 @@ function ProfilePage() {
     }
 
     return (
-        <div className='text-lg flex flex-col mt-12'>
+        <div className='text-lg flex flex-col h-screen overflow-hidden'>
             <div
                 className={`overflow-x-hidden absolute inset-0 flex justify-end bg-black/30 z-50 transition-opacity duration-300 ${showFollowers ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setShowFollowers(false)} >
@@ -159,7 +159,7 @@ function ProfilePage() {
                 </div>
             </div>
             {/* profile header */}
-            <div className='pt-8 pl-8 pb-4 flex items-center gap-x-4 border-b border-border shadow-[0_4px_4px_-1px_rgba(0,0,0,0.1)]'>
+            <div className=' mt-12 pt-8 pl-8 pr-8 pb-4 flex items-center gap-x-4 border-b border-border shadow-[0_4px_4px_-1px_rgba(0,0,0,0.1)]'>
                 <div className='w-32 h-32 bg-primary rounded-full flex-shrink-0'></div>
                 <div>
                     <div className="text-4xl font-bold flex items-center gap-x-8 text-text">
@@ -183,22 +183,22 @@ function ProfilePage() {
                 </div>
             </div>
             {/* body */}
-            <div className='px-8 pt-4 gap-8 flex justify-baseline'>
+            <div className='px-8 pt-4 gap-8 flex md:flex-row flex-col md:items-baseline items-center overflow-auto'>
                 {/* user stats */}
-                <div className='text-text text-lg flex justify-center'>
+                <div className='text-text text-lg flex justify-center w-full max-w-[400px] md:sticky top-0'>
                     <UserStats stats={stats} />
                 </div>
                 {/* user posts */}
-                <div className='text-text text-lg flex justify-center'>
+                <div className='text-text text-lg flex justify-start'>
                     {posts.length > 0 ? (
-                        <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 16rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                        <div className="flex flex-col gap-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                             {posts.map((post) => (
                                 <PostItem key={post.id} post={post} isSelf={profileUser?.id === user?.id} deletePost={() => {handleDelete(post.id)}} />
                             ))}
                         </div>
                     ) : (
-                        <div className="flex flex-col gap-4 overflow-y-scroll" style={{ maxHeight: 'calc(100vh - 4rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="relative text-text p-2 rounded-lg border border-border shadow w-[500px] overflow-visible">
+                        <div className="flex flex-col gap-4 overflow-y-scroll" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div className="relative text-text p-2 rounded-lg border border-border shadow max-w-[500px] min-w-[450px] overflow-visible">
                                 <div className="text-lg">
                                     <span className="font-bold"> User has no posts </span>
                                 </div>

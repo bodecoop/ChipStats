@@ -49,11 +49,18 @@ function NavBar() {
                 </div>
 
                 {/* Mobile Menu */}
-                {mobileMenu && (
+                {mobileMenu && user && (
                     <div className="md:hidden fixed top-[48px] right-0 flex flex-col space-y-2 bg-bg-neutral items-center">
-                        <Link to="/user" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>{user?.user_metadata?.first_name} {user?.user_metadata?.last_name}</Link>
-                        <Link to="/" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Home</Link>
-                        <Link to="/discover" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Discover</Link>
+                        <Link to="/dashboard" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Dashboard</Link>
+                        <Link to="/create" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Create</Link>
+                        <Link to="/friends" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Friends</Link>
+                        <Link to={`/profile/${user?.id}`} className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2 border-t-2 border-border'>Profile</Link>
+                    </div>
+                )}
+                {mobileMenu && !user && (
+                    <div className="md:hidden fixed top-[48px] right-0 flex flex-col space-y-2 bg-bg-neutral items-center"> 
+                        <Link to="/login" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Login</Link>
+                        <Link to="/signup" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Sign Up</Link>
                     </div>
                 )}
             </div>

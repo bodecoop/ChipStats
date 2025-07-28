@@ -7,6 +7,7 @@ import ViewPosts from "./pages/ViewPosts"
 import CreatePostPage from "./pages/CreatePostPage"
 import ProfilePage from "./pages/ProfilePage"
 import { useAuth } from "./context/AuthContext"
+import FriendsPage from "./pages/FriendsPage"
 
 function App() {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/dashboard" element={<ViewPosts/>} />
                   <Route path="/create" element={<CreatePostPage/>} />
                   <Route path="/profile/:id" element={<ProfilePage/>}/>
+                  <Route path="/friends" element={<FriendsPage/>}/>
                 </Route>
                 <Route element={<UserRoute />}>
                   <Route path="/" element={<Home/>} />

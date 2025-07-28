@@ -124,7 +124,7 @@ function PostItem({ post, isSelf, deletePost }: Props) {
   }
 
   return (
-    <div className="relative text-text p-2 rounded-lg border border-border shadow w-[500px] overflow-visible">
+    <div className="relative text-text p-2 rounded-lg border border-border shadow max-w-[500px] min-w-[450px] overflow-visible">
       {isSelf && (
         <div ref={buttonRef} className="absolute top-2 right-2">        
           <BiDotsVerticalRounded onClick={() => setShowOptions(!showOptions)} />

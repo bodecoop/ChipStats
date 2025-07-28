@@ -75,9 +75,9 @@ function CreatePost() {
     }
 
     return (
-        <div className="text-lg h-fit flex flex-col bg-bg-dark/60 absolute w-full max-w-[700px] min-w-[200px] mx-auto text-text-inverse">
+        <div className="text-lg h-fit flex flex-col bg-bg-dark/60 absolute max-w-[700px] text-text-inverse">
             <div className="text-2xl bg-bg-dark w-full py-4 text-center text-text-inverse">Create Post</div>
-            <div className="flex items-center justify-start gap-8 px-8 py-4">
+            <div className="flex md:flex-row flex-col md:items-center md:justify-start md:gap-8 gap-2 px-8 py-4">
                  <div className="flex flex-col">
                         Time
                         <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[400px]">
@@ -91,70 +91,72 @@ function CreatePost() {
                                 disabled={loading} />
                         </div>
                     </div>
-                <div>
-                    <div className="flex flex-col">
-                        Buy In
-                        <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
-                            <input
-                                type="text"
-                                maxLength={7}
-                                step="0.01"
-                                min="0"
-                                placeholder="0.00"
-                                inputMode="decimal"
-                                value={buyIn}
-                                className="text-text border-none outline-none placeholder:text-text-muted/50 border w-[110px] text-right focus:outline-none"
-                                onBlur={() => {
-                                    const num = parseFloat(buyIn);
-                                    if (!isNaN(num)) {
-                                        setBuyIn(num.toFixed(2)); // formats to "0.00"
-                                    }
-                                }}
-                                onChange={(e) => {
-                                    const value = e.target.value;
-                                    if (/^\d*\.?\d{0,2}$/.test(value) || value === "") {
-                                        setBuyIn(value);
-                                    }
-                                }}
-                                disabled={loading} />
+                <div className="flex items-center">    
+                    <div>
+                        <div className="flex flex-col">
+                            Buy In
+                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
+                                <input
+                                    type="text"
+                                    maxLength={7}
+                                    step="0.01"
+                                    min="0"
+                                    placeholder="0.00"
+                                    inputMode="decimal"
+                                    value={buyIn}
+                                    className="text-text border-none outline-none placeholder:text-text-muted/50 border w-[110px] text-right focus:outline-none"
+                                    onBlur={() => {
+                                        const num = parseFloat(buyIn);
+                                        if (!isNaN(num)) {
+                                            setBuyIn(num.toFixed(2)); // formats to "0.00"
+                                        }
+                                    }}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        if (/^\d*\.?\d{0,2}$/.test(value) || value === "") {
+                                            setBuyIn(value);
+                                        }
+                                    }}
+                                    disabled={loading} />
+                            </div>
+                        </div>
+                        <div className="flex flex-col">
+                            Cash Out
+                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
+                                <input
+                                    type="text"
+                                    maxLength={7}
+                                    step="0.01"
+                                    min="0"
+                                    placeholder="0.00"
+                                    inputMode="decimal"
+                                    value={buyOut}
+                                    className="text-text border-none outline-none placeholder:text-text-muted/50 border w-[110px] text-right focus:outline-none"
+                                    onBlur={() => {
+                                        const num = parseFloat(buyOut);
+                                        if (!isNaN(num)) {
+                                            setBuyOut(num.toFixed(2)); // formats to "0.00"
+                                        }
+                                    }}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        if (/^\d*\.?\d{0,2}$/.test(value) || value === "") {
+                                            setBuyOut(value);
+                                        }
+                                    }}
+                                    disabled={loading} />
+                            </div>
                         </div>
                     </div>
-                    <div className="flex flex-col">
-                        Cash Out
-                        <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
-                            <input
-                                type="text"
-                                maxLength={7}
-                                step="0.01"
-                                min="0"
-                                placeholder="0.00"
-                                inputMode="decimal"
-                                value={buyOut}
-                                className="text-text border-none outline-none placeholder:text-text-muted/50 border w-[110px] text-right focus:outline-none"
-                                onBlur={() => {
-                                    const num = parseFloat(buyOut);
-                                    if (!isNaN(num)) {
-                                        setBuyOut(num.toFixed(2)); // formats to "0.00"
-                                    }
-                                }}
-                                onChange={(e) => {
-                                    const value = e.target.value;
-                                    if (/^\d*\.?\d{0,2}$/.test(value) || value === "") {
-                                        setBuyOut(value);
-                                    }
-                                }}
-                                disabled={loading} />
-                        </div>
+                    <div className="text-2xl p-8 text-shadow-lg">
+                        {buyIn && buyOut && (
+                            handleDifferentComp({ a: buyIn, b: buyOut })
+                        )}
                     </div>
-                </div>
-                <div className="text-2xl p-8">
-                    {buyIn && buyOut && (
-                        handleDifferentComp({ a: buyIn, b: buyOut })
-                    )}
                 </div>
             </div>
             
-            <div className="flex flex-col  w-full px-8 pb-8">
+            <div className="flex flex-col w-full px-8 pb-8">
                 Details
                 <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 w-full">
                     <textarea
