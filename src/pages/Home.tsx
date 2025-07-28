@@ -1,10 +1,10 @@
 import { Link } from "react-router"
-
+import imgUrl from '../assets/home-background.png'
 
 function Home() {
   return (
     <div className='relative flex items-center justify-center h-screen overflow-hidden'>
-      <img src="./src/assets/home-background.png" alt="poker chips" className="w-full h-full object-cover blur-xs" />
+      <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover blur-xs" />
       <div className="absolute bg-primary/50 w-150 h-150 rounded-full top-8 right-[-16rem] blur-2xl"></div>
       <div className="absolute bg-bg-main/50 w-150 h-150 rounded-full bottom-0 left-[-16rem] blur-2xl"></div>
         {/* header */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router';
 import { supabase } from '../supabase-client';
 import { BiEnvelope, BiLockAlt, BiLogoGoogle } from 'react-icons/bi';
+import imgUrl from '../assets/poker-chips.jpg';
 
 function SignUp() {
     const [email, setEmail] = useState('');
@@ -44,7 +45,7 @@ function SignUp() {
 
   return (
     <div className="text-2xl flex items-center justify-center h-screen overflow-y-auto">
-        <img src="./src/assets/poker-chips.jpg" alt="poker chips" className="w-full h-full object-cover" />
+        <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover" />
         <div className="h-fit flex flex-col items-center absolute">
             <div className="text-4xl bg-bg-dark w-full py-4 text-center text-text-inverse">Sign Up</div>
             <div className="flex flex-col gap-2 text-lg px-8 py-4 bg-bg-dark/60">
