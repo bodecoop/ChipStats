@@ -31,9 +31,9 @@ function Login() {
     }
 
   return (
-    <div className="text-2xl flex items-center justify-center h-screen overflow-y-auto">
-        <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover" />
-        <div className="h-fit flex flex-col items-center absolute">
+    <div className="relative text-2xl flex items-center justify-center h-screen overflow-y-auto">
+        <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover absolute" />
+        <div className="mt-12 h-fit flex flex-col items-center absolute px-2">
             <div className="text-4xl bg-bg-dark w-full py-4 text-center text-text-inverse">Log In</div>
             <div className="flex flex-col gap-2 text-lg px-8 py-4 bg-bg-dark/60">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-4 text-lg">
@@ -45,7 +45,7 @@ function Login() {
                                 placeholder="Email address" 
                                 required
                                 autoComplete="email"
-                                className="text-text border-none outline-none placeholder:text-text-muted min-w-[300px]"
+                                className="text-text border-none outline-none placeholder:text-text-muted w-full"
                                 onChange={(e) => setEmail(e.target.value)} />
                             <BiEnvelope className="text-text" />
                         </div>
@@ -58,7 +58,7 @@ function Login() {
                                 placeholder="Password" 
                                 required
                                 autoComplete="current-password"
-                                className="text-text border-none outline-none placeholder:text-text-muted min-w-[300px]"
+                                className="text-text border-none outline-none placeholder:text-text-muted w-full"
                                 onChange={(e) => setPassword(e.target.value)}/>
                             <BiLockAlt className="text-text" />
                         </div>

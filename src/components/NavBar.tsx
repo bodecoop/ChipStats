@@ -55,6 +55,8 @@ function NavBar() {
                         <Link to="/create" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Create</Link>
                         <Link to="/friends" className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2'>Friends</Link>
                         <Link to={`/profile/${user?.id}`} className='text-lg font-semibold flex justify-center hover:bg-bg-light w-full px-4 py-2 border-t-2 border-border'>Profile</Link>
+                        {/* logout */}
+                        <button onClick={() => {signOut(); nav('/')}} className='text-lg font-semibold flex justify-center text-red-600 hover:bg-bg-light w-full px-4 pb-2'>Logout</button>
                     </div>
                 )}
                 {mobileMenu && !user && (

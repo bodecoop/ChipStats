@@ -44,16 +44,16 @@ function SignUp() {
     }
 
   return (
-    <div className="text-2xl flex items-center justify-center h-screen overflow-y-auto">
-        <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover" />
-        <div className="h-fit flex flex-col items-center absolute">
+    <div className="relative text-2xl flex items-center justify-center h-screen overflow-y-auto">
+        <img src={imgUrl} alt="poker chips" className="w-full h-full object-cover absolute" />
+        <div className="mt-12 h-fit flex flex-col items-center justify-center absolute px-2">
             <div className="text-4xl bg-bg-dark w-full py-4 text-center text-text-inverse">Sign Up</div>
-            <div className="flex flex-col gap-2 text-lg px-8 py-4 bg-bg-dark/60">
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-4 text-lg">
-                    <div className='flex justify-evenly gap-2'>
+            <div className="flex flex-col gap-2 text-lg px-8 py-1 sm:py-4 bg-bg-dark/60">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:gap-3 gap-1 mt-4 text-lg">
+                    <div className='flex flex-col sm:flex-row justify-evenly sm:gap-3 gap-1'>
                         <div className="flex flex-col text-text-inverse">
                             First Name
-                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
+                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 w-full">
                                 <input 
                                     type="text" 
                                     placeholder="First Name" 
@@ -65,7 +65,7 @@ function SignUp() {
                         </div>
                         <div className="flex flex-col text-text-inverse">
                             Last Name
-                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 max-w-[200px]">
+                            <div className="flex items-center gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5 w-full">
                                 <input 
                                     type="text" 
                                     placeholder="Last Name" 
@@ -76,7 +76,7 @@ function SignUp() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col text-text-inverse">
+                    <div className="flex flex-col text-text-inverse ">
                         Email
                         <div className="flex items-center justify-between gap-2 border-border bg-bg-main border rounded-md px-4 py-0.5">
                             <input 
@@ -84,7 +84,7 @@ function SignUp() {
                                 placeholder="Email address" 
                                 required
                                 autoComplete="email"
-                                className="text-text border-none outline-none placeholder:text-text-muted min-w-[300px]"
+                                className="text-text border-none outline-none placeholder:text-text-muted w-full"
                                 onChange={(e) => setEmail(e.target.value)} />
                             <BiEnvelope className="text-text" />
                         </div>
@@ -97,7 +97,7 @@ function SignUp() {
                                 placeholder="Password" 
                                 required
                                 autoComplete="new-password"
-                                className="text-text border-none outline-none placeholder:text-text-muted min-w-[300px]"
+                                className="text-text border-none outline-none placeholder:text-text-muted w-full"
                                 onChange={(e) => setPassword(e.target.value)}/>
                             <BiLockAlt className="text-text" />
                         </div>
@@ -118,7 +118,7 @@ function SignUp() {
 
                 </form>
 
-                <div className="flex items-center text-white p-4">
+                <div className="flex items-center text-white sm:p-4 p-1">
                     <div className="flex-grow border-t border-border"></div>
                     <span className="px-4 text-sm font-semibold">or</span>
                     <div className="flex-grow border-t border-border"></div>

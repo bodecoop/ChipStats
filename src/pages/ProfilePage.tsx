@@ -159,10 +159,10 @@ function ProfilePage() {
                 </div>
             </div>
             {/* profile header */}
-            <div className=' mt-12 pt-8 pl-8 pr-8 pb-4 flex items-center gap-x-4 border-b border-border shadow-[0_4px_4px_-1px_rgba(0,0,0,0.1)]'>
-                <div className='w-32 h-32 bg-primary rounded-full flex-shrink-0'></div>
+            <div className='mt-12 pt-8 md:px-8 px-4 pb-4 flex items-center gap-x-4 border-b border-border shadow-[0_4px_4px_-1px_rgba(0,0,0,0.1)]'>
+                <div className='w-16 h-16 md:w-32 md:h-32 bg-primary rounded-full flex-shrink-0'></div>
                 <div>
-                    <div className="text-4xl font-bold flex items-center gap-x-8 text-text">
+                    <div className="text-2xl md:text-4xl font-bold flex items-center md:gap-x-8 gap-x-4 text-text">
                         <div>
                             {profileUser?.first_name} {profileUser?.last_name}
                         </div>
@@ -198,7 +198,7 @@ function ProfilePage() {
                         </div>
                     ) : (
                         <div className="flex flex-col gap-4 overflow-y-scroll" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="relative text-text p-2 rounded-lg border border-border shadow max-w-[500px] min-w-[450px] overflow-visible">
+                            <div className="relative text-text p-2 rounded-lg border border-border shadow w-full overflow-visible">
                                 <div className="text-lg">
                                     <span className="font-bold"> User has no posts </span>
                                 </div>
